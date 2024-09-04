@@ -357,7 +357,7 @@ final class AuthenticationGuard extends GuardAbstract implements AuthenticationG
         if (is_object($credentials) && property_exists($credentials, 'user') && property_exists($credentials, 'idToken') && property_exists($credentials, 'accessToken') && property_exists($credentials, 'accessTokenScope') && property_exists($credentials, 'accessTokenExpiration') && property_exists($credentials, 'refreshToken')) {
             $decoded = null;
 
-            if (null !== $credentials->accessToken) {
+            if (null !== $credentials->accessToken && $sdk->configuration()->getAudience() !== null) {
                 $decoded = (new Parser(new SdkConfiguration(strategy: SdkConfiguration::STRATEGY_NONE), $credentials->accessToken))->export();
             }
 

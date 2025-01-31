@@ -53,6 +53,11 @@ abstract class User implements Authenticatable, UserContract
         return 'id';
     }
 
+    final public function getAuthPasswordName(): string
+    {
+        return 'password';
+    }
+    
     final public function getAuthPassword(): string
     {
         return '';
